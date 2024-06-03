@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
 import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 import { Google as GoogleIcon } from '@mui/icons-material';
 import { signIn } from "@/firebase/auth/traditionalAuth";
@@ -51,9 +50,9 @@ export default function Page() {
     }, []);
 
     return (
-        <Box sx={{ height: '100vh' }}>
-            <Paper elevation={3} sx={{ p: 3, maxWidth: 300, mx: 'auto', mt: 5 }}>
-                <Typography variant="h5" sx={{ mb: 2 }}>Iniciar sesión</Typography>
+        <Box sx={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0d1117' }}>
+            <Paper elevation={3} sx={{ p: 3, maxWidth: 300, mx: 'auto', mt: 5, backgroundColor: '#161b22', color: '#c9d1d9' }}>
+                <Typography variant="h5" sx={{ mb: 2, color: '#c9d1d9' }}>Iniciar sesión</Typography>
                 {error && <Typography color="error">{error}</Typography>}
                 <TextField
                     label="Correo electrónico"
@@ -62,6 +61,7 @@ export default function Page() {
                     margin="normal"
                     value={email}
                     onChange={handleEmailChange}
+                    sx={{ input: { color: '#c9d1d9' }, label: { color: '#c9d1d9' } }}
                 />
                 <TextField
                     label="Contraseña"
@@ -71,11 +71,12 @@ export default function Page() {
                     type="password"
                     value={password}
                     onChange={handlePasswordChange}
+                    sx={{ input: { color: '#c9d1d9' }, label: { color: '#c9d1d9' } }}
                 />
                 <Button
                     variant="contained"
                     fullWidth
-                    sx={{ mt: 2 }}
+                    sx={{ mt: 2, backgroundColor: '#238636', '&:hover': { backgroundColor: '#2ea043' } }}
                     onClick={handleSignIn}
                 >
                     Iniciar sesión
@@ -84,14 +85,16 @@ export default function Page() {
                     startIcon={<GoogleIcon />}
                     variant="outlined"
                     fullWidth
-                    sx={{ mt: 2 }}
+                    sx={{ mt: 2, color: '#c9d1d9', borderColor: '#c9d1d9', '&:hover': { borderColor: '#f0f6fc' } }}
                     onClick={handleSignInWithGoogle}
                 >
                     Inicia sesión con Google
                 </Button>
                 <Typography component="p" sx={{ mt: 2 }}>
                     ¿No tienes una cuenta?
-                    <Typography color="primary" component={Link} href="/signup">Regístrate</Typography>
+                    <Typography color="primary" component={Link} href="/signup" sx={{ display: 'inline', ml: 1, color: '#58a6ff' }}>
+                        Regístrate
+                    </Typography>
                 </Typography>
             </Paper>
         </Box>
